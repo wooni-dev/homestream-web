@@ -1,4 +1,4 @@
-const REPO = "wooningeire/homestream"; // TODO: 실제 저장소로 교체
+const REPO = "wooni-dev/homestream";
 
 export type Release = {
   tag_name: string;

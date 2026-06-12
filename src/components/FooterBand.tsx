@@ -1,8 +1,10 @@
+import { getTranslations } from "next-intl/server";
 import type { Release } from "@/lib/github";
 import DownloadButton from "./DownloadButton";
 import { getExeAsset } from "@/lib/github";
 
-export default function FooterBand({ release }: { release: Release | null }) {
+export default async function FooterBand({ release }: { release: Release | null }) {
+  const t = await getTranslations("Footer");
   const asset = release ? getExeAsset(release) : null;
 
   return (
@@ -20,7 +22,7 @@ export default function FooterBand({ release }: { release: Release | null }) {
               lineHeight: 1.25,
             }}
           >
-            지금 바로 시작하세요
+            {t("cta")}
           </p>
           <p
             style={{
@@ -29,7 +31,7 @@ export default function FooterBand({ release }: { release: Release | null }) {
               marginTop: "8px",
             }}
           >
-            Windows 10 / 11 &nbsp;·&nbsp; 무료 &nbsp;·&nbsp; 설치 불필요
+            {t("subtitle")}
           </p>
         </div>
         <DownloadButton release={release} asset={asset} />
@@ -47,7 +49,7 @@ export default function FooterBand({ release }: { release: Release | null }) {
         }}
       >
         <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "12px" }}>
-          © 2024 HomeStream
+          {t("copyright")}
         </p>
         {release && (
           <a
@@ -56,7 +58,7 @@ export default function FooterBand({ release }: { release: Release | null }) {
             rel="noopener noreferrer"
             style={{ color: "rgba(255,255,255,0.7)", fontSize: "12px", textDecoration: "none" }}
           >
-            GitHub Releases ↗
+            {t("releases")}
           </a>
         )}
       </div>

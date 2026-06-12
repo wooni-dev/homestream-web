@@ -1,10 +1,11 @@
-const steps = [
-  { num: "01", title: "exe 실행", desc: "다운로드한 HomeStream.exe를 실행합니다." },
-  { num: "02", title: "QR 코드 스캔", desc: "화면에 표시된 QR 코드를 스마트폰으로 스캔합니다." },
-  { num: "03", title: "영상 선택 후 재생", desc: "브라우저가 열리면 원하는 영상 파일을 선택하여 바로 재생." },
-];
+import { getTranslations } from "next-intl/server";
 
-export default function HowItWorksBand() {
+type Step = { num: string; title: string; desc: string };
+
+export default async function HowItWorksBand() {
+  const t = await getTranslations("HowItWorks");
+  const steps = t.raw("steps") as Step[];
+
   return (
     <section
       style={{ backgroundColor: "var(--surface-dark-elevated)" }}
@@ -21,7 +22,7 @@ export default function HowItWorksBand() {
           }}
           className="mb-16"
         >
-          시작하는 법
+          {t("heading")}
         </h2>
         <div className="flex flex-col md:flex-row gap-8">
           {steps.map((s, i) => (

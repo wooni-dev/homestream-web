@@ -1,0 +1,40 @@
+{
+  "Hero": {
+    "badge": "HomeStream",
+    "title": "Stream PC Videos\nto Your Phone",
+    "description": "Play video files stored on your PC\ndirectly in your phone's browser over Wi-Fi.\nNo app install — just run a single .exe file.",
+    "version": "Latest: {version} · Windows"
+  },
+  "Features": {
+    "heading": "Why HomeStream",
+    "items": [
+      { "icon": "📡", "title": "Wi-Fi Only", "desc": "Access from any device browser on the same network. Instantly." },
+      { "icon": "📱", "title": "No App Install", "desc": "Just open a URL in your phone's browser. That's it." },
+      { "icon": "🎬", "title": "Local File Streaming", "desc": "Stream video files directly from your PC. No uploading needed." },
+      { "icon": "⚡", "title": "Single Executable", "desc": "No install wizard. Run the .exe once and the server starts." }
+    ]
+  },
+  "HowItWorks": {
+    "heading": "How It Works",
+    "steps": [
+      { "num": "01", "title": "Run the exe", "desc": "Launch the downloaded HomeStream.exe." },
+      { "num": "02", "title": "Scan the QR Code", "desc": "Scan the QR code shown on screen with your smartphone." },
+      { "num": "03", "title": "Pick a video & play", "desc": "Your browser opens. Select a video file and it plays instantly." }
+    ]
+  },
+  "Footer": {
+    "cta": "Get started now",
+    "subtitle": "Windows 10 / 11 · Free · No installation needed",
+    "copyright": "© 2024 HomeStream",
+    "releases": "GitHub Releases ↗"
+  },
+  "DownloadButton": {
+    "download": "Download",
+    "downloadWithSize": "Download ({size} MB)",
+    "fallback": "Download from GitHub"
+  },
+  "Metadata": {
+    "title": "HomeStream — Stream PC Videos to Your Phone",
+    "description": "Stream videos from your PC to your phone over Wi-Fi. No app needed — just run a single .exe file."
+  }
+}

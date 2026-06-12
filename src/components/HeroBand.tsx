@@ -1,8 +1,11 @@
+import { getTranslations } from "next-intl/server";
 import type { Release } from "@/lib/github";
 import { getExeAsset } from "@/lib/github";
 import DownloadButton from "./DownloadButton";
 
-export default function HeroBand({ release }: { release: Release | null }) {
+
+export default async function HeroBand({ release }: { release: Release | null }) {
+  const t = await getTranslations("Hero");
   const asset = release ? getExeAsset(release) : null;
 
   return (
@@ -16,7 +19,7 @@ export default function HeroBand({ release }: { release: Release | null }) {
             style={{ color: "var(--primary)", fontSize: "14px", fontWeight: 700, letterSpacing: "0.1em" }}
             className="uppercase mb-4"
           >
-            HomeStream
+            {t("badge")}
           </p>
           <h1
             style={{
@@ -25,11 +28,11 @@ export default function HeroBand({ release }: { release: Release | null }) {
               fontWeight: 300,
               lineHeight: 1.25,
               letterSpacing: "-0.1px",
+              whiteSpace: "pre-line",
             }}
             className="mb-6"
           >
-            PC 영상을<br />
-            폰으로 바로 스트리밍
+            {t("title")}
           </h1>
           <p
             style={{
@@ -37,12 +40,11 @@ export default function HeroBand({ release }: { release: Release | null }) {
               fontSize: "18px",
               fontWeight: 400,
               lineHeight: 1.5,
+              whiteSpace: "pre-line",
             }}
             className="mb-10"
           >
-            같은 Wi-Fi에 연결된 스마트폰 브라우저에서<br />
-            PC의 영상 파일을 바로 재생하세요.<br />
-            별도 앱 설치 없이, 단일 실행파일로 시작.
+            {t("description")}
           </p>
 
           <DownloadButton release={release} asset={asset} />
@@ -52,7 +54,7 @@ export default function HeroBand({ release }: { release: Release | null }) {
               style={{ color: "var(--body-dark)", fontSize: "14px" }}
               className="mt-4"
             >
-              최신 버전: {release.tag_name} &nbsp;·&nbsp; Windows
+              {t("version", { version: release.tag_name })}
             </p>
           )}
         </div>

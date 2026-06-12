@@ -1,27 +1,11 @@
-const features = [
-  {
-    icon: "📡",
-    title: "Wi-Fi만 있으면 OK",
-    desc: "같은 네트워크에 연결된 모든 기기의 브라우저에서 바로 접속.",
-  },
-  {
-    icon: "📱",
-    title: "앱 설치 없음",
-    desc: "스마트폰 기본 브라우저에서 URL 하나로 바로 재생.",
-  },
-  {
-    icon: "🎬",
-    title: "로컬 파일 스트리밍",
-    desc: "PC에 저장된 영상 파일을 그대로 스트리밍. 업로드 불필요.",
-  },
-  {
-    icon: "⚡",
-    title: "단일 실행파일",
-    desc: "설치 과정 없음. exe 실행 한 번으로 서버 시작.",
-  },
-];
+import { getTranslations } from "next-intl/server";
 
-export default function FeaturesBand() {
+type FeatureItem = { icon: string; title: string; desc: string };
+
+export default async function FeaturesBand() {
+  const t = await getTranslations("Features");
+  const items = t.raw("items") as FeatureItem[];
+
   return (
     <section
       style={{ backgroundColor: "var(--canvas-light)" }}
@@ -38,10 +22,10 @@ export default function FeaturesBand() {
           }}
           className="mb-16"
         >
-          왜 HomeStream인가
+          {t("heading")}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {features.map((f) => (
+          {items.map((f) => (
             <div
               key={f.title}
               style={{

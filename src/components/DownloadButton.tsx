@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import type { Release } from "@/lib/github";
 import { RELEASES_URL } from "@/lib/github";
 
@@ -12,8 +13,15 @@ export default function DownloadButton({
   release: Release | null;
   asset: Asset;
 }) {
+  const t = useTranslations("DownloadButton");
   const href = asset?.browser_download_url ?? release?.html_url ?? RELEASES_URL;
   const sizeMB = asset ? (asset.size / 1024 / 1024).toFixed(1) : null;
+
+  const label = !release
+    ? t("fallback")
+    : sizeMB
+    ? t("downloadWithSize", { size: sizeMB })
+    : t("download");
 
   return (
     <a
@@ -46,7 +54,7 @@ export default function DownloadButton({
           fill="currentColor"
         />
       </svg>
-      {release ? `다운로드${sizeMB ? ` (${sizeMB} MB)` : ""}` : "GitHub에서 다운로드"}
+      {label}
     </a>
   );
 }

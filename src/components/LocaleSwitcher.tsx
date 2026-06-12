@@ -31,6 +31,9 @@ export default function LocaleSwitcher() {
         color: "#ffffff",
         cursor: "pointer",
         transition: "background-color 0.15s",
+        display: "flex",
+        gap: "6px",
+        alignItems: "center",
       }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLButtonElement).style.backgroundColor =
@@ -41,7 +44,9 @@ export default function LocaleSwitcher() {
           "rgba(255,255,255,0.1)";
       }}
     >
-      {locale === "ko" ? "EN" : "한국어"}
+      <span style={{ opacity: locale === "ko" ? 1 : 0.45 }}>KO</span>
+      <span style={{ opacity: 0.3 }}>|</span>
+      <span style={{ opacity: locale === "en" ? 1 : 0.45 }}>EN</span>
     </button>
   );
 }

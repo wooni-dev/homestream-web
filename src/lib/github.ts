@@ -1,4 +1,5 @@
 const REPO = "wooni-dev/homestream";
+export const RELEASES_URL = `https://github.com/${REPO}/releases`;
 
 export type Release = {
   tag_name: string;

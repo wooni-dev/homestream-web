@@ -5,8 +5,6 @@ import FeaturesBand from "@/components/FeaturesBand";
 import HowItWorksBand from "@/components/HowItWorksBand";
 import FooterBand from "@/components/FooterBand";
 
-export const revalidate = 3600;
-
 export default async function Home({
   params,
 }: {

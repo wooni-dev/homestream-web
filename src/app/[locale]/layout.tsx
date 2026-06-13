@@ -13,7 +13,7 @@ const roboto = Roboto({
   variable: "--font-roboto",
 });
 
-const BASE_URL = "https://homestream.wooni.dev";
+const BASE_URL = "https://gethomestream.com";
 
 export async function generateMetadata({
   params,

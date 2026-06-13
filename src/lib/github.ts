@@ -20,7 +20,6 @@ export async function getLatestRelease(): Promise<Release | null> {
             Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
           }),
         },
-        next: { revalidate: 3600 },
       }
     );
     if (!res.ok) return null;

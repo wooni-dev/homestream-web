@@ -1,15 +1,24 @@
-export async function onRequest(context) {
-  const object = await context.env.BUCKET.get("releases/latest/windows/HomeStream.exe");
+export async function onRequest() {
+  const res = await fetch(
+    "https://api.github.com/repos/wooni-dev/homestream/releases/latest",
+    {
+      headers: {
+        Accept: "application/vnd.github+json",
+        "User-Agent": "homestream-web",
+      },
+    }
+  );
 
-  if (!object) {
-    return new Response("Not found", { status: 404 });
+  if (!res.ok) {
+    return new Response("Release not found", { status: 404 });
   }
 
-  return new Response(object.body, {
-    headers: {
-      "Content-Type": "application/octet-stream",
-      "Content-Disposition": 'attachment; filename="HomeStream.exe"',
-      "Content-Length": String(object.size),
-    },
-  });
+  const release = await res.json();
+  const asset = release.assets?.find((a) => a.name.endsWith(".exe"));
+
+  if (!asset) {
+    return new Response("No Windows release found", { status: 404 });
+  }
+
+  return Response.redirect(asset.browser_download_url, 302);
 }

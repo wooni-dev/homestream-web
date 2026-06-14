@@ -5,6 +5,9 @@ export async function onRequest() {
       headers: {
         Accept: "application/vnd.github+json",
         "User-Agent": "homestream-web",
+        ...(typeof GITHUB_TOKEN !== "undefined" && GITHUB_TOKEN
+          ? { Authorization: `Bearer ${GITHUB_TOKEN}` }
+          : {}),
       },
     }
   );

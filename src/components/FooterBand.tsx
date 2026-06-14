@@ -1,11 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import type { Release } from "@/lib/github";
 import DownloadButton from "./DownloadButton";
-import { getExeAsset } from "@/lib/github";
 
 export default async function FooterBand({ release }: { release: Release | null }) {
   const t = await getTranslations("Footer");
-  const asset = release ? getExeAsset(release) : null;
 
   return (
     <footer
@@ -34,7 +32,7 @@ export default async function FooterBand({ release }: { release: Release | null 
             {t("subtitle")}
           </p>
         </div>
-        <DownloadButton release={release} asset={asset} />
+        <DownloadButton />
       </div>
 
       <div

@@ -1,12 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import type { Release } from "@/lib/github";
-import { getExeAsset } from "@/lib/github";
 import DownloadButton from "./DownloadButton";
-
 
 export default async function HeroBand({ release }: { release: Release | null }) {
   const t = await getTranslations("Hero");
-  const asset = release ? getExeAsset(release) : null;
 
   return (
     <section
@@ -47,7 +44,7 @@ export default async function HeroBand({ release }: { release: Release | null })
             {t("description")}
           </p>
 
-          <DownloadButton release={release} asset={asset} />
+          <DownloadButton />
 
           {release && (
             <p

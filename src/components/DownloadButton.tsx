@@ -1,27 +1,11 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import type { Release } from "@/lib/github";
-import { RELEASES_URL } from "@/lib/github";
 
-type Asset = { name: string; browser_download_url: string; size: number } | null;
-
-export default function DownloadButton({
-  release,
-  asset,
-}: {
-  release: Release | null;
-  asset: Asset;
-}) {
+export default function DownloadButton() {
   const t = useTranslations("DownloadButton");
-  const href = asset?.browser_download_url ?? release?.html_url ?? RELEASES_URL;
-  const sizeMB = asset ? (asset.size / 1024 / 1024).toFixed(1) : null;
-
-  const label = !release
-    ? t("fallback")
-    : sizeMB
-    ? t("downloadWithSize", { size: sizeMB })
-    : t("download");
+  const href = "/api/download";
+  const label = t("download");
 
   return (
     <a

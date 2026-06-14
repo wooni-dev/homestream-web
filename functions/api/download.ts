@@ -4,8 +4,17 @@ interface Env {
   BUCKET: R2Bucket;
 }
 
+const CANDIDATE_PATHS = [
+  "releases/latest/windows/HomeStream.exe",
+  "releases/latest/stream_server.exe",
+];
+
 export const onRequest: PagesFunction<Env> = async (context) => {
-  const object = await context.env.BUCKET.get("releases/latest/windows/HomeStream.exe");
+  let object: R2ObjectBody | null = null;
+  for (const path of CANDIDATE_PATHS) {
+    object = await context.env.BUCKET.get(path);
+    if (object) break;
+  }
 
   if (!object) {
     return new Response("Not found", { status: 404 });

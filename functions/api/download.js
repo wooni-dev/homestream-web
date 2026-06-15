@@ -1,13 +1,12 @@
-export async function onRequest() {
+export async function onRequest(context) {
+  const token = context.env.GITHUB_TOKEN;
   const res = await fetch(
     "https://api.github.com/repos/wooni-dev/homestream/releases/latest",
     {
       headers: {
         Accept: "application/vnd.github+json",
         "User-Agent": "homestream-web",
-        ...(typeof GITHUB_TOKEN !== "undefined" && GITHUB_TOKEN
-          ? { Authorization: `Bearer ${GITHUB_TOKEN}` }
-          : {}),
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
       },
     }
   );

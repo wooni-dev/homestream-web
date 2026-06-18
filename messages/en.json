@@ -26,7 +26,8 @@
     "cta": "Get started now",
     "subtitle": "Windows 10 / 11 · Free · No installation needed",
     "copyright": "© 2024 HomeStream",
-    "releases": "GitHub Releases ↗"
+    "releases": "GitHub Releases ↗",
+    "codeSigningPolicy": "Code Signing Policy"
   },
   "DownloadButton": {
     "download": "Download",

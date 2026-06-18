@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import type { Release } from "@/lib/github";
 import DownloadButton from "./DownloadButton";
+import { Link } from "@/i18n/navigation";
 
 export default async function FooterBand({ release }: { release: Release | null }) {
   const t = await getTranslations("Footer");
@@ -49,16 +50,24 @@ export default async function FooterBand({ release }: { release: Release | null 
         <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "12px" }}>
           {t("copyright")}
         </p>
-        {release && (
-          <a
-            href={release.html_url}
-            target="_blank"
-            rel="noopener noreferrer"
+        <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+          <Link
+            href="/code-signing-policy"
             style={{ color: "rgba(255,255,255,0.7)", fontSize: "12px", textDecoration: "none" }}
           >
-            {t("releases")}
-          </a>
-        )}
+            {t("codeSigningPolicy")}
+          </Link>
+          {release && (
+            <a
+              href={release.html_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "rgba(255,255,255,0.7)", fontSize: "12px", textDecoration: "none" }}
+            >
+              {t("releases")}
+            </a>
+          )}
+        </div>
       </div>
     </footer>
   );

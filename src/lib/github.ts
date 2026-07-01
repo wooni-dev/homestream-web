@@ -1,5 +1,4 @@
 const REPO = "wooni-dev/homestream";
-export const RELEASES_URL = `https://github.com/${REPO}/releases`;
 
 export type Release = {
   tag_name: string;
@@ -29,6 +28,3 @@ export async function getLatestRelease(): Promise<Release | null> {
   }
 }
 
-export function getExeAsset(release: Release) {
-  return release.assets.find((a) => a.name.endsWith(".exe")) ?? null;
-}

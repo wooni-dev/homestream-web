@@ -3,7 +3,7 @@
     "badge": "HomeStream",
     "title": "PC 영상을\n폰으로 바로 스트리밍",
     "description": "같은 Wi-Fi에 연결된 스마트폰 브라우저에서\nPC의 영상 파일을 바로 재생하세요.\n별도 앱 설치 없이, 단일 실행파일로 시작.",
-    "version": "최신 버전: {version} · Windows"
+    "version": "최신 버전: {version} · Windows (64bit)"
   },
   "Features": {
     "heading": "왜 HomeStream인가",
